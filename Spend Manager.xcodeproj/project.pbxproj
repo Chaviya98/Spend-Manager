@@ -101,12 +101,10 @@
 		4EC0F875260A196F0029CD19 /* Spend Manager */ = {
 			isa = PBXGroup;
 			children = (
-				4EC0F876260A196F0029CD19 /* AppDelegate.swift */,
-				4EC0F878260A196F0029CD19 /* SceneDelegate.swift */,
+				4EC0F8B1260A19BA0029CD19 /* Common */,
+				4EC0F8B0260A19820029CD19 /* View */,
 				4EC0F87A260A196F0029CD19 /* ViewController.swift */,
-				4EC0F87C260A196F0029CD19 /* Main.storyboard */,
 				4EC0F882260A19720029CD19 /* Assets.xcassets */,
-				4EC0F884260A19720029CD19 /* LaunchScreen.storyboard */,
 				4EC0F887260A19720029CD19 /* Info.plist */,
 				4EC0F87F260A196F0029CD19 /* Spend_Manager.xcdatamodeld */,
 			);
@@ -129,6 +127,24 @@
 				4EC0F89D260A19730029CD19 /* Info.plist */,
 			);
 			path = "Spend ManagerUITests";
+			sourceTree = "<group>";
+		};
+		4EC0F8B0260A19820029CD19 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4EC0F87C260A196F0029CD19 /* Main.storyboard */,
+				4EC0F884260A19720029CD19 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4EC0F8B1260A19BA0029CD19 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				4EC0F876260A196F0029CD19 /* AppDelegate.swift */,
+				4EC0F878260A196F0029CD19 /* SceneDelegate.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
