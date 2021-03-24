@@ -472,10 +472,10 @@
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2ll-81-abp">
                                                     <rect key="frame" x="5" y="5" width="365" height="35"/>
                                                     <segments>
-                                                        <segment title="First"/>
-                                                        <segment title="Second"/>
-                                                        <segment title=""/>
-                                                        <segment title=""/>
+                                                        <segment title="One off"/>
+                                                        <segment title="Daily"/>
+                                                        <segment title="Weekly"/>
+                                                        <segment title="Monthly"/>
                                                     </segments>
                                                 </segmentedControl>
                                             </subviews>
@@ -527,6 +527,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Expenses" id="zzJ-pF-SRD">
+                        <barButtonItem key="backBarButtonItem" title=" " id="gxO-sL-uu6"/>
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="p7k-nJ-tHI"/>
                         <barButtonItem key="rightBarButtonItem" title="Add" id="0bp-rW-8GB"/>
                     </navigationItem>
