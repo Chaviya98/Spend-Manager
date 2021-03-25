@@ -100,7 +100,9 @@
                             <constraint firstItem="c72-mK-wwp" firstAttribute="trailing" secondItem="Cf2-oY-S3m" secondAttribute="trailing" id="wOc-Yp-KLr"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Category Title" id="1ih-53-vfR"/>
+                    <navigationItem key="navigationItem" title="Category Title" id="1ih-53-vfR">
+                        <barButtonItem key="rightBarButtonItem" image="info.circle.fill" catalog="system" id="oAh-uv-AZ0"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LS9-F1-h29" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -568,6 +570,7 @@
         <segue reference="Xey-nJ-u1s"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="info.circle.fill" catalog="system" width="128" height="121"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
