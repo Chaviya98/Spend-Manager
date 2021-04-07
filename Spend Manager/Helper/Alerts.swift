@@ -6,8 +6,6 @@
 //
 
 import Foundation
-
-
 struct Alerts {
 
     struct CommonAlert {
