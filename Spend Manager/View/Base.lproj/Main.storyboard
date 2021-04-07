@@ -221,7 +221,7 @@
         <!--Catogery-->
         <scene sceneID="aQc-c3-x7Q">
             <objects>
-                <tableViewController id="oZH-Ep-zU2" customClass="AddCategoryController" customModule="Spend_Manager" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="oZH-Ep-zU2" customClass="AddCategoryViewController" customModule="Spend_Manager" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Vvd-0f-KcN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="680"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -287,7 +287,7 @@
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DhE-q7-gLr">
                                                             <rect key="frame" x="0.0" y="0.0" width="38" height="43.5"/>
-                                                            <color key="backgroundColor" red="0.96914845709999997" green="0.6128886938" blue="0.30183821919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                         </button>
                                                         <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xLR-XV-roy">
                                                             <rect key="frame" x="53" y="0.0" width="37.5" height="43.5"/>
@@ -363,11 +363,6 @@
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="vlO-rP-tLI"/>
                         <barButtonItem key="rightBarButtonItem" title="Add" id="kuT-Iu-n9j"/>
                     </navigationItem>
-                    <connections>
-                        <outlet property="budgetTextField" destination="Piv-zW-cOQ" id="h6n-Kn-cfI"/>
-                        <outlet property="categoryNameTextField" destination="uSF-W1-IgX" id="d3t-XW-72A"/>
-                        <outlet property="notesTextView" destination="6qd-1P-CSg" id="b3u-cm-j0p"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HhS-gF-0j1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -670,6 +665,9 @@
         </systemColor>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -28,7 +28,7 @@ class CustomCellExpenses: UITableViewCell {
     @IBOutlet weak var lblDaysLeft: UILabel!
     @IBOutlet weak var budgetCircularProgressBar: UIView!
     @IBOutlet weak var btnInfor: UIButton!
-    @IBOutlet weak var daysRemainingLinearProgressBar: UIView!
+    @IBOutlet weak var daysRemainingLinearProgressBar: LinearProgressBar!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -47,22 +47,22 @@ class CustomCellExpenses: UITableViewCell {
         let remainingDaysPercentage = calculations.getRemainingTime(startDate, end: dueDate)
         
         lblExpensesName.text = expensesName
-        lblExpensesNo.text = expensesNo
+        lblExpensesNo.text = String(expensesNo)
         lblDueDate.text = "Due: \(formatter.formatDate(dueDate))"
         lblDaysLeft.text = "\(daysLeft) Days \(hoursLeft) Hours \(minutesLeft) Minutes Remaining"
         
+//        DispatchQueue.main.async {
+//            let colours = self.colours.getProgressGradient(Int(taskProgress))
+//            self.taskProgressBar.startGradientColor = colours[0]
+//            self.taskProgressBar.endGradientColor = colours[1]
+//            self.taskProgressBar.progress = taskProgress / 100
+//        }
+//
         DispatchQueue.main.async {
-            let colours = self.colours.getProgressGradient(Int(taskProgress))
-            self.taskProgressBar.startGradientColor = colours[0]
-            self.taskProgressBar.endGradientColor = colours[1]
-            self.taskProgressBar.progress = taskProgress / 100
-        }
-        
-        DispatchQueue.main.async {
-            let colours = self.colours.getProgressGradient(remainingDaysPercentage, negative: true)
-            self.daysRemainingProgressBar.startGradientColor = colours[0]
-            self.daysRemainingProgressBar.endGradientColor = colours[1]
-            self.daysRemainingProgressBar.progress = CGFloat(remainingDaysPercentage) / 100
+            let colours = self.colors.getProgressGradient(remainingDaysPercentage, negative: true)
+            self.daysRemainingLinearProgressBar.startGradientColor = colours[0]
+            self.daysRemainingLinearProgressBar.endGradientColor = colours[1]
+            self.daysRemainingLinearProgressBar.progress = CGFloat(remainingDaysPercentage) / 100
         }
         
         self.notes = notes

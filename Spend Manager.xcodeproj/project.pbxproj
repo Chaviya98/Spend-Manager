@@ -14,10 +14,6 @@
 		4E43D79326145A000067160D /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E43D79226145A000067160D /* Formatter.swift */; };
 		4E43D798261468B40067160D /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E43D797261468B40067160D /* Colors.swift */; };
 		4E43D79D2614693F0067160D /* DateTimeCalculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E43D79C2614693F0067160D /* DateTimeCalculations.swift */; };
-		4E43D7A226146AEB0067160D /* Catergory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E43D7A126146AEB0067160D /* Catergory+CoreDataClass.swift */; };
-		4E43D7A726146B6B0067160D /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E43D7A626146B6B0067160D /* Category+CoreDataProperties.swift */; };
-		4E43D7B2261470080067160D /* Expenses+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E43D7B1261470080067160D /* Expenses+CoreDataClass.swift */; };
-		4E43D7BA2614702E0067160D /* Expenses+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E43D7B92614702E0067160D /* Expenses+CoreDataProperties.swift */; };
 		4E43D7C9261476260067160D /* CircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E43D7C8261476260067160D /* CircularProgressBar.swift */; };
 		4E43D7D12614763D0067160D /* LinearProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E43D7D02614763D0067160D /* LinearProgressBar.swift */; };
 		4EC0F877260A196F0029CD19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC0F876260A196F0029CD19 /* AppDelegate.swift */; };
@@ -29,6 +25,7 @@
 		4EC0F886260A19720029CD19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EC0F884260A19720029CD19 /* LaunchScreen.storyboard */; };
 		4EC0F891260A19720029CD19 /* Spend_ManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC0F890260A19720029CD19 /* Spend_ManagerTests.swift */; };
 		4EC0F89C260A19730029CD19 /* Spend_ManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC0F89B260A19730029CD19 /* Spend_ManagerUITests.swift */; };
+		4ED7377F261E037300222C20 /* AddCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED7377E261E037300222C20 /* AddCategoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,10 +53,6 @@
 		4E43D79226145A000067160D /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		4E43D797261468B40067160D /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		4E43D79C2614693F0067160D /* DateTimeCalculations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeCalculations.swift; sourceTree = "<group>"; };
-		4E43D7A126146AEB0067160D /* Catergory+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Catergory+CoreDataClass.swift"; sourceTree = "<group>"; };
-		4E43D7A626146B6B0067160D /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		4E43D7B1261470080067160D /* Expenses+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Expenses+CoreDataClass.swift"; sourceTree = "<group>"; };
-		4E43D7B92614702E0067160D /* Expenses+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Expenses+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4E43D7C8261476260067160D /* CircularProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBar.swift; sourceTree = "<group>"; };
 		4E43D7D02614763D0067160D /* LinearProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearProgressBar.swift; sourceTree = "<group>"; };
 		4EC0F873260A196F0029CD19 /* Spend Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Spend Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,6 +70,7 @@
 		4EC0F897260A19730029CD19 /* Spend ManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Spend ManagerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EC0F89B260A19730029CD19 /* Spend_ManagerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spend_ManagerUITests.swift; sourceTree = "<group>"; };
 		4EC0F89D260A19730029CD19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4ED7377E261E037300222C20 /* AddCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,10 +111,6 @@
 		4E43D78E261457EE0067160D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4E43D7A126146AEB0067160D /* Catergory+CoreDataClass.swift */,
-				4E43D7A626146B6B0067160D /* Category+CoreDataProperties.swift */,
-				4E43D7B1261470080067160D /* Expenses+CoreDataClass.swift */,
-				4E43D7B92614702E0067160D /* Expenses+CoreDataProperties.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -130,6 +120,7 @@
 			children = (
 				4E43D7C8261476260067160D /* CircularProgressBar.swift */,
 				4E43D7D02614763D0067160D /* LinearProgressBar.swift */,
+				4ED7377E261E037300222C20 /* AddCategoryViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -344,16 +335,13 @@
 			files = (
 				4EC0F87B260A196F0029CD19 /* ViewController.swift in Sources */,
 				4E43D798261468B40067160D /* Colors.swift in Sources */,
-				4E43D7B2261470080067160D /* Expenses+CoreDataClass.swift in Sources */,
 				4E43D786261449BD0067160D /* CustomCellExpenses.swift in Sources */,
 				4E43D776261445150067160D /* CustomCellCategory.swift in Sources */,
-				4E43D7A226146AEB0067160D /* Catergory+CoreDataClass.swift in Sources */,
 				4E43D79326145A000067160D /* Formatter.swift in Sources */,
-				4E43D7BA2614702E0067160D /* Expenses+CoreDataProperties.swift in Sources */,
-				4E43D7A726146B6B0067160D /* Category+CoreDataProperties.swift in Sources */,
 				4EC0F877260A196F0029CD19 /* AppDelegate.swift in Sources */,
 				4EC0F881260A196F0029CD19 /* Spend_Manager.xcdatamodeld in Sources */,
 				4E43D7D12614763D0067160D /* LinearProgressBar.swift in Sources */,
+				4ED7377F261E037300222C20 /* AddCategoryViewController.swift in Sources */,
 				4E43D7C9261476260067160D /* CircularProgressBar.swift in Sources */,
 				4EC0F879260A196F0029CD19 /* SceneDelegate.swift in Sources */,
 				4E43D79D2614693F0067160D /* DateTimeCalculations.swift in Sources */,
