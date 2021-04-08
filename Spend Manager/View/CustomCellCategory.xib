@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -50,7 +49,6 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemGray3Color"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="XkE-Ak-UTm" secondAttribute="bottom" constant="9" id="9mF-j2-JFU"/>
                                             <constraint firstItem="ar0-Pv-lgz" firstAttribute="leading" secondItem="XkE-Ak-UTm" secondAttribute="trailing" constant="20" id="BPo-YL-vKL"/>
@@ -81,7 +79,6 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemGrayColor"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="NPY-Q5-yHf" secondAttribute="bottom" constant="9" id="5SW-MC-V22"/>
                                             <constraint firstItem="QNw-0b-6gb" firstAttribute="top" secondItem="YFq-UM-e0v" secondAttribute="top" id="CAX-rG-jF0"/>
@@ -95,7 +92,6 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="RZk-EJ-AGw" firstAttribute="top" secondItem="wty-BL-XUe" secondAttribute="top" id="3WX-Gr-6Ua"/>
                             <constraint firstItem="RZk-EJ-AGw" firstAttribute="leading" secondItem="wty-BL-XUe" secondAttribute="leading" id="7XW-vT-5cM"/>
@@ -115,6 +111,7 @@
             <connections>
                 <outlet property="budgetValue" destination="NPY-Q5-yHf" id="d6E-2M-Mj3"/>
                 <outlet property="categoryName" destination="XkE-Ak-UTm" id="QiR-Rq-5cd"/>
+                <outlet property="cellContentView" destination="H2p-sc-9uM" id="JjU-YG-oer"/>
             </connections>
             <point key="canvasLocation" x="92.028985507246389" y="123.21428571428571"/>
         </tableViewCell>
@@ -123,14 +120,5 @@
         <image name="info" catalog="system" width="93" height="128"/>
         <image name="location.circle.fill" catalog="system" width="128" height="121"/>
         <image name="xmark.diamond" catalog="system" width="128" height="122"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray3Color">
-            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGrayColor">
-            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
     </resources>
 </document>
