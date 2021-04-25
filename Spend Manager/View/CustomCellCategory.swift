@@ -37,11 +37,10 @@ class CustomCellCategory: UITableViewCell {
         self.cellDelegate?.customCell(cell: self,sender:sender as! UIButton,data:notes)
     }
     
-    func commonInt(_ categoryName: String, budgetValue:String, notes :String, color :String){
-        
+    func commonInt(_ categoryName: String, budgetValue:Double, notes :String, color :String){
         self.categoryName.text = categoryName
-        self.budgetValue.text = budgetValue
-        self.cellContentView.backgroundColor = colors.hexStringToUIColor(hex: "#\(color)")
+        self.budgetValue.text = String(budgetValue)
+        self.cellContentView.backgroundColor = colors.hexStringToUIColor(hex: color)
         self.notes = notes
     }
     

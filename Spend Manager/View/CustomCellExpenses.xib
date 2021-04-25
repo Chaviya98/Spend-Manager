@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -52,6 +51,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MTH-9B-oTe">
                                                 <rect key="frame" x="0.0" y="0.0" width="20" height="22"/>
                                                 <state key="normal" image="info.circle" catalog="system"/>
+                                                <connections>
+                                                    <action selector="handleViewNotesButtonClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="myx-ue-IOk"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CeM-sj-EEC">
                                                 <rect key="frame" x="40" y="0.0" width="71" height="22"/>
@@ -69,22 +71,19 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lzM-R5-WE1">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lzM-R5-WE1" customClass="CircularProgressBar" customModule="Spend_Manager" customModuleProvider="target">
                                 <rect key="frame" x="482" y="0.0" width="150" height="129"/>
-                                <color key="backgroundColor" systemColor="systemGray2Color"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="7lC-k8-O5E"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ors-FA-tX6">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ors-FA-tX6" customClass="LinearProgressBar" customModule="Spend_Manager" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="99" width="452" height="30"/>
-                                <color key="backgroundColor" systemColor="systemGray2Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Xig-GQ-HFk"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="lzM-R5-WE1" firstAttribute="leading" secondItem="ors-FA-tX6" secondAttribute="trailing" constant="30" id="IeK-B1-knW"/>
                             <constraint firstItem="lzM-R5-WE1" firstAttribute="top" secondItem="k9q-Pn-R0Q" secondAttribute="top" id="NNf-gw-cZh"/>
@@ -122,11 +121,5 @@
     </objects>
     <resources>
         <image name="info.circle" catalog="system" width="128" height="121"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
     </resources>
 </document>

@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		477EABDCE98273E57B2E90AA /* Pods_Spend_Manager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5A6485E3B70D291E7ACB5CB /* Pods_Spend_Manager.framework */; };
 		4E43D776261445150067160D /* CustomCellCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E43D774261445150067160D /* CustomCellCategory.swift */; };
 		4E43D777261445150067160D /* CustomCellCategory.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E43D775261445150067160D /* CustomCellCategory.xib */; };
 		4E43D786261449BD0067160D /* CustomCellExpenses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E43D784261449BD0067160D /* CustomCellExpenses.swift */; };
@@ -16,6 +17,14 @@
 		4E43D79D2614693F0067160D /* DateTimeCalculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E43D79C2614693F0067160D /* DateTimeCalculations.swift */; };
 		4E43D7C9261476260067160D /* CircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E43D7C8261476260067160D /* CircularProgressBar.swift */; };
 		4E43D7D12614763D0067160D /* LinearProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E43D7D02614763D0067160D /* LinearProgressBar.swift */; };
+		4E8483322630051D00B2B8A1 /* Expense+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E84832E2630051D00B2B8A1 /* Expense+CoreDataClass.swift */; };
+		4E8483332630051D00B2B8A1 /* Expense+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E84832F2630051D00B2B8A1 /* Expense+CoreDataProperties.swift */; };
+		4E8483342630051D00B2B8A1 /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8483302630051D00B2B8A1 /* Category+CoreDataClass.swift */; };
+		4E8483352630051D00B2B8A1 /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8483312630051D00B2B8A1 /* Category+CoreDataProperties.swift */; };
+		4E8ED67E26240337007CEBAB /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8ED67D26240337007CEBAB /* MasterViewController.swift */; };
+		4E8ED68126240415007CEBAB /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8ED68026240415007CEBAB /* DetailViewController.swift */; };
+		4E8ED68526240B19007CEBAB /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8ED68426240B19007CEBAB /* UITableView.swift */; };
+		4EB347AB2620A44000AFD3EF /* NotesPopUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB347AA2620A44000AFD3EF /* NotesPopUpController.swift */; };
 		4EC0F877260A196F0029CD19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC0F876260A196F0029CD19 /* AppDelegate.swift */; };
 		4EC0F879260A196F0029CD19 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC0F878260A196F0029CD19 /* SceneDelegate.swift */; };
 		4EC0F87B260A196F0029CD19 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC0F87A260A196F0029CD19 /* ViewController.swift */; };
@@ -23,27 +32,11 @@
 		4EC0F881260A196F0029CD19 /* Spend_Manager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4EC0F87F260A196F0029CD19 /* Spend_Manager.xcdatamodeld */; };
 		4EC0F883260A19720029CD19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EC0F882260A19720029CD19 /* Assets.xcassets */; };
 		4EC0F886260A19720029CD19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EC0F884260A19720029CD19 /* LaunchScreen.storyboard */; };
-		4EC0F891260A19720029CD19 /* Spend_ManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC0F890260A19720029CD19 /* Spend_ManagerTests.swift */; };
-		4EC0F89C260A19730029CD19 /* Spend_ManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC0F89B260A19730029CD19 /* Spend_ManagerUITests.swift */; };
 		4ED7377F261E037300222C20 /* AddCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED7377E261E037300222C20 /* AddCategoryViewController.swift */; };
+		4ED73786261E058B00222C20 /* UIViewcontroller+DisplayAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED73785261E058B00222C20 /* UIViewcontroller+DisplayAlert.swift */; };
+		4ED7378E261E05B200222C20 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED7378D261E05B200222C20 /* Alerts.swift */; };
+		4ED7379E261E23E800222C20 /* AddExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED7379D261E23E800222C20 /* AddExpensesViewController.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		4EC0F88D260A19720029CD19 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4EC0F86B260A196F0029CD19 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4EC0F872260A196F0029CD19;
-			remoteInfo = "Spend Manager";
-		};
-		4EC0F898260A19730029CD19 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4EC0F86B260A196F0029CD19 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4EC0F872260A196F0029CD19;
-			remoteInfo = "Spend Manager";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		4E43D774261445150067160D /* CustomCellCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellCategory.swift; sourceTree = "<group>"; };
@@ -55,6 +48,14 @@
 		4E43D79C2614693F0067160D /* DateTimeCalculations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeCalculations.swift; sourceTree = "<group>"; };
 		4E43D7C8261476260067160D /* CircularProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBar.swift; sourceTree = "<group>"; };
 		4E43D7D02614763D0067160D /* LinearProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearProgressBar.swift; sourceTree = "<group>"; };
+		4E84832E2630051D00B2B8A1 /* Expense+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Expense+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		4E84832F2630051D00B2B8A1 /* Expense+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Expense+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		4E8483302630051D00B2B8A1 /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		4E8483312630051D00B2B8A1 /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		4E8ED67D26240337007CEBAB /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		4E8ED68026240415007CEBAB /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		4E8ED68426240B19007CEBAB /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		4EB347AA2620A44000AFD3EF /* NotesPopUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesPopUpController.swift; sourceTree = "<group>"; };
 		4EC0F873260A196F0029CD19 /* Spend Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Spend Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EC0F876260A196F0029CD19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4EC0F878260A196F0029CD19 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,13 +65,17 @@
 		4EC0F882260A19720029CD19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4EC0F885260A19720029CD19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4EC0F887260A19720029CD19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4EC0F88C260A19720029CD19 /* Spend ManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Spend ManagerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EC0F890260A19720029CD19 /* Spend_ManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spend_ManagerTests.swift; sourceTree = "<group>"; };
 		4EC0F892260A19720029CD19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4EC0F897260A19730029CD19 /* Spend ManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Spend ManagerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EC0F89B260A19730029CD19 /* Spend_ManagerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spend_ManagerUITests.swift; sourceTree = "<group>"; };
 		4EC0F89D260A19730029CD19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4ED7377E261E037300222C20 /* AddCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryViewController.swift; sourceTree = "<group>"; };
+		4ED73785261E058B00222C20 /* UIViewcontroller+DisplayAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewcontroller+DisplayAlert.swift"; sourceTree = "<group>"; };
+		4ED7378D261E05B200222C20 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
+		4ED7379D261E23E800222C20 /* AddExpensesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpensesViewController.swift; sourceTree = "<group>"; };
+		BCAADF8CA975BCAAF52791AC /* Pods-Spend Manager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spend Manager.release.xcconfig"; path = "Target Support Files/Pods-Spend Manager/Pods-Spend Manager.release.xcconfig"; sourceTree = "<group>"; };
+		C0029C2F2CA9F89E883078DC /* Pods-Spend Manager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spend Manager.debug.xcconfig"; path = "Target Support Files/Pods-Spend Manager/Pods-Spend Manager.debug.xcconfig"; sourceTree = "<group>"; };
+		D5A6485E3B70D291E7ACB5CB /* Pods_Spend_Manager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spend_Manager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,20 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4EC0F889260A19720029CD19 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4EC0F894260A19730029CD19 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				477EABDCE98273E57B2E90AA /* Pods_Spend_Manager.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,6 +96,7 @@
 				4E43D79226145A000067160D /* Formatter.swift */,
 				4E43D797261468B40067160D /* Colors.swift */,
 				4E43D79C2614693F0067160D /* DateTimeCalculations.swift */,
+				4ED7378D261E05B200222C20 /* Alerts.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -111,6 +104,11 @@
 		4E43D78E261457EE0067160D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4E84832E2630051D00B2B8A1 /* Expense+CoreDataClass.swift */,
+				4E84832F2630051D00B2B8A1 /* Expense+CoreDataProperties.swift */,
+				4E8483302630051D00B2B8A1 /* Category+CoreDataClass.swift */,
+				4E8483312630051D00B2B8A1 /* Category+CoreDataProperties.swift */,
+				4ED73784261E057B00222C20 /* Extensions */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -121,6 +119,10 @@
 				4E43D7C8261476260067160D /* CircularProgressBar.swift */,
 				4E43D7D02614763D0067160D /* LinearProgressBar.swift */,
 				4ED7377E261E037300222C20 /* AddCategoryViewController.swift */,
+				4ED7379D261E23E800222C20 /* AddExpensesViewController.swift */,
+				4EB347AA2620A44000AFD3EF /* NotesPopUpController.swift */,
+				4E8ED67D26240337007CEBAB /* MasterViewController.swift */,
+				4E8ED68026240415007CEBAB /* DetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -132,6 +134,8 @@
 				4EC0F88F260A19720029CD19 /* Spend ManagerTests */,
 				4EC0F89A260A19730029CD19 /* Spend ManagerUITests */,
 				4EC0F874260A196F0029CD19 /* Products */,
+				E15D65C32D2922354EEF8369 /* Pods */,
+				EA8943F5B125890B121A3D22 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -139,8 +143,6 @@
 			isa = PBXGroup;
 			children = (
 				4EC0F873260A196F0029CD19 /* Spend Manager.app */,
-				4EC0F88C260A19720029CD19 /* Spend ManagerTests.xctest */,
-				4EC0F897260A19730029CD19 /* Spend ManagerUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -201,6 +203,32 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		4ED73784261E057B00222C20 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4ED73785261E058B00222C20 /* UIViewcontroller+DisplayAlert.swift */,
+				4E8ED68426240B19007CEBAB /* UITableView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E15D65C32D2922354EEF8369 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C0029C2F2CA9F89E883078DC /* Pods-Spend Manager.debug.xcconfig */,
+				BCAADF8CA975BCAAF52791AC /* Pods-Spend Manager.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		EA8943F5B125890B121A3D22 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D5A6485E3B70D291E7ACB5CB /* Pods_Spend_Manager.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -208,9 +236,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4EC0F8A0260A19730029CD19 /* Build configuration list for PBXNativeTarget "Spend Manager" */;
 			buildPhases = (
+				7CD7B5466FCC5D5D7186F747 /* [CP] Check Pods Manifest.lock */,
 				4EC0F86F260A196F0029CD19 /* Sources */,
 				4EC0F870260A196F0029CD19 /* Frameworks */,
 				4EC0F871260A196F0029CD19 /* Resources */,
+				7D1A7902CFCCE5731DDD070F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -220,42 +250,6 @@
 			productName = "Spend Manager";
 			productReference = 4EC0F873260A196F0029CD19 /* Spend Manager.app */;
 			productType = "com.apple.product-type.application";
-		};
-		4EC0F88B260A19720029CD19 /* Spend ManagerTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4EC0F8A3260A19730029CD19 /* Build configuration list for PBXNativeTarget "Spend ManagerTests" */;
-			buildPhases = (
-				4EC0F888260A19720029CD19 /* Sources */,
-				4EC0F889260A19720029CD19 /* Frameworks */,
-				4EC0F88A260A19720029CD19 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				4EC0F88E260A19720029CD19 /* PBXTargetDependency */,
-			);
-			name = "Spend ManagerTests";
-			productName = "Spend ManagerTests";
-			productReference = 4EC0F88C260A19720029CD19 /* Spend ManagerTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		4EC0F896260A19730029CD19 /* Spend ManagerUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4EC0F8A6260A19730029CD19 /* Build configuration list for PBXNativeTarget "Spend ManagerUITests" */;
-			buildPhases = (
-				4EC0F893260A19730029CD19 /* Sources */,
-				4EC0F894260A19730029CD19 /* Frameworks */,
-				4EC0F895260A19730029CD19 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				4EC0F899260A19730029CD19 /* PBXTargetDependency */,
-			);
-			name = "Spend ManagerUITests";
-			productName = "Spend ManagerUITests";
-			productReference = 4EC0F897260A19730029CD19 /* Spend ManagerUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -268,14 +262,6 @@
 				TargetAttributes = {
 					4EC0F872260A196F0029CD19 = {
 						CreatedOnToolsVersion = 12.3;
-					};
-					4EC0F88B260A19720029CD19 = {
-						CreatedOnToolsVersion = 12.3;
-						TestTargetID = 4EC0F872260A196F0029CD19;
-					};
-					4EC0F896260A19730029CD19 = {
-						CreatedOnToolsVersion = 12.3;
-						TestTargetID = 4EC0F872260A196F0029CD19;
 					};
 				};
 			};
@@ -293,8 +279,6 @@
 			projectRoot = "";
 			targets = (
 				4EC0F872260A196F0029CD19 /* Spend Manager */,
-				4EC0F88B260A19720029CD19 /* Spend ManagerTests */,
-				4EC0F896260A19730029CD19 /* Spend ManagerUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -312,21 +296,49 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4EC0F88A260A19720029CD19 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4EC0F895260A19730029CD19 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7CD7B5466FCC5D5D7186F747 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Spend Manager-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7D1A7902CFCCE5731DDD070F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Spend Manager/Pods-Spend Manager-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Spend Manager/Pods-Spend Manager-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Spend Manager/Pods-Spend Manager-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4EC0F86F260A196F0029CD19 /* Sources */ = {
@@ -335,49 +347,31 @@
 			files = (
 				4EC0F87B260A196F0029CD19 /* ViewController.swift in Sources */,
 				4E43D798261468B40067160D /* Colors.swift in Sources */,
+				4E8483322630051D00B2B8A1 /* Expense+CoreDataClass.swift in Sources */,
 				4E43D786261449BD0067160D /* CustomCellExpenses.swift in Sources */,
 				4E43D776261445150067160D /* CustomCellCategory.swift in Sources */,
+				4E8483332630051D00B2B8A1 /* Expense+CoreDataProperties.swift in Sources */,
 				4E43D79326145A000067160D /* Formatter.swift in Sources */,
+				4E8ED67E26240337007CEBAB /* MasterViewController.swift in Sources */,
 				4EC0F877260A196F0029CD19 /* AppDelegate.swift in Sources */,
 				4EC0F881260A196F0029CD19 /* Spend_Manager.xcdatamodeld in Sources */,
+				4ED7379E261E23E800222C20 /* AddExpensesViewController.swift in Sources */,
 				4E43D7D12614763D0067160D /* LinearProgressBar.swift in Sources */,
+				4E8ED68126240415007CEBAB /* DetailViewController.swift in Sources */,
+				4E8483342630051D00B2B8A1 /* Category+CoreDataClass.swift in Sources */,
 				4ED7377F261E037300222C20 /* AddCategoryViewController.swift in Sources */,
+				4EB347AB2620A44000AFD3EF /* NotesPopUpController.swift in Sources */,
 				4E43D7C9261476260067160D /* CircularProgressBar.swift in Sources */,
+				4E8ED68526240B19007CEBAB /* UITableView.swift in Sources */,
+				4ED73786261E058B00222C20 /* UIViewcontroller+DisplayAlert.swift in Sources */,
 				4EC0F879260A196F0029CD19 /* SceneDelegate.swift in Sources */,
+				4ED7378E261E05B200222C20 /* Alerts.swift in Sources */,
 				4E43D79D2614693F0067160D /* DateTimeCalculations.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4EC0F888260A19720029CD19 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4EC0F891260A19720029CD19 /* Spend_ManagerTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4EC0F893260A19730029CD19 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4EC0F89C260A19730029CD19 /* Spend_ManagerUITests.swift in Sources */,
+				4E8483352630051D00B2B8A1 /* Category+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		4EC0F88E260A19720029CD19 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4EC0F872260A196F0029CD19 /* Spend Manager */;
-			targetProxy = 4EC0F88D260A19720029CD19 /* PBXContainerItemProxy */;
-		};
-		4EC0F899260A19730029CD19 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4EC0F872260A196F0029CD19 /* Spend Manager */;
-			targetProxy = 4EC0F898260A19730029CD19 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		4EC0F87C260A196F0029CD19 /* Main.storyboard */ = {
@@ -517,6 +511,7 @@
 		};
 		4EC0F8A1260A19730029CD19 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C0029C2F2CA9F89E883078DC /* Pods-Spend Manager.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -536,6 +531,7 @@
 		};
 		4EC0F8A2260A19730029CD19 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BCAADF8CA975BCAAF52791AC /* Pods-Spend Manager.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -550,90 +546,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;
-			};
-			name = Release;
-		};
-		4EC0F8A4260A19730029CD19 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9TWTL5Q94V;
-				INFOPLIST_FILE = "Spend ManagerTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.chaveen.Spend-ManagerTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Spend Manager.app/Spend Manager";
-			};
-			name = Debug;
-		};
-		4EC0F8A5260A19730029CD19 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9TWTL5Q94V;
-				INFOPLIST_FILE = "Spend ManagerTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.chaveen.Spend-ManagerTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Spend Manager.app/Spend Manager";
-			};
-			name = Release;
-		};
-		4EC0F8A7260A19730029CD19 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9TWTL5Q94V;
-				INFOPLIST_FILE = "Spend ManagerUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.chaveen.Spend-ManagerUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Spend Manager";
-			};
-			name = Debug;
-		};
-		4EC0F8A8260A19730029CD19 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9TWTL5Q94V;
-				INFOPLIST_FILE = "Spend ManagerUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.chaveen.Spend-ManagerUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Spend Manager";
 			};
 			name = Release;
 		};
@@ -654,24 +566,6 @@
 			buildConfigurations = (
 				4EC0F8A1260A19730029CD19 /* Debug */,
 				4EC0F8A2260A19730029CD19 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		4EC0F8A3260A19730029CD19 /* Build configuration list for PBXNativeTarget "Spend ManagerTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4EC0F8A4260A19730029CD19 /* Debug */,
-				4EC0F8A5260A19730029CD19 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		4EC0F8A6260A19730029CD19 /* Build configuration list for PBXNativeTarget "Spend ManagerUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4EC0F8A7260A19730029CD19 /* Debug */,
-				4EC0F8A8260A19730029CD19 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

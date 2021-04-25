@@ -26,7 +26,7 @@ class CustomCellExpenses: UITableViewCell {
     @IBOutlet weak var lblExpensesAmount: UILabel!
     @IBOutlet weak var lblDueDate: UILabel!
     @IBOutlet weak var lblDaysLeft: UILabel!
-    @IBOutlet weak var budgetCircularProgressBar: UIView!
+    @IBOutlet weak var budgetCircularProgressBar: CircularProgressBar!
     @IBOutlet weak var btnInfor: UIButton!
     @IBOutlet weak var daysRemainingLinearProgressBar: LinearProgressBar!
     
@@ -41,6 +41,11 @@ class CustomCellExpenses: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func handleViewNotesButtonClick(_ sender: UIButton) {
+        self.cellDelegate?.viewNotes(cell: self, sender: sender as! UIButton, data: notes)
+    }
+    
+    
     func commonInt(_ expensesNo:Int, expensesName:String, expensesAmount :Double, startDate:Date, dueDate:Date, notes:String){
         
         let (daysLeft, hoursLeft, minutesLeft) = calculations.getTimeDifference(now, end: dueDate)
@@ -48,16 +53,17 @@ class CustomCellExpenses: UITableViewCell {
         
         lblExpensesName.text = expensesName
         lblExpensesNo.text = String(expensesNo)
+        lblExpensesAmount.text = String(expensesAmount)
         lblDueDate.text = "Due: \(formatter.formatDate(dueDate))"
         lblDaysLeft.text = "\(daysLeft) Days \(hoursLeft) Hours \(minutesLeft) Minutes Remaining"
         
-//        DispatchQueue.main.async {
-//            let colours = self.colours.getProgressGradient(Int(taskProgress))
-//            self.taskProgressBar.startGradientColor = colours[0]
-//            self.taskProgressBar.endGradientColor = colours[1]
-//            self.taskProgressBar.progress = taskProgress / 100
-//        }
-//
+        DispatchQueue.main.async {
+            let colours = self.colors.getProgressGradient(remainingDaysPercentage, negative: true)
+            self.budgetCircularProgressBar.startGradientColor = colours[0]
+            self.budgetCircularProgressBar.endGradientColor = colours[1]
+            self.budgetCircularProgressBar.progress = CGFloat(remainingDaysPercentage) / 100
+        }
+
         DispatchQueue.main.async {
             let colours = self.colors.getProgressGradient(remainingDaysPercentage, negative: true)
             self.daysRemainingLinearProgressBar.startGradientColor = colours[0]
