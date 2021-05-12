@@ -28,7 +28,7 @@ class AddExpensesViewController: UITableViewController, UIPopoverPresentationCon
     let now = Date()
     
     let formatter: Formatter = Formatter()
-    
+
     
     @IBOutlet weak var expenseNameTextField: UITextField!
     @IBOutlet weak var amountTextField: UITextField!
@@ -58,11 +58,33 @@ class AddExpensesViewController: UITableViewController, UIPopoverPresentationCon
             occurrenceType = "One off"
         }
         
-        
+        amountTextField.keyboardType = .numberPad
         configureView()
         // Disable add button
         addButtonEnability()
     }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        let newText = NSString(string: textField.text!).replacingCharacters(in: range, with: string)
+        
+        var totalAmountSpend : Double = 0.0
+        let expenses = (selectedCategory!.expense!.allObjects as! [Expense])
+        
+        for index in expenses.indices {
+            totalAmountSpend = totalAmountSpend + Double(expenses[index].amount)
+        }
+        
+        let maxAmountAvailable = selectedCategory!.budget - totalAmountSpend
+        
+        if newText.isEmpty {
+            return true
+        }
+        else if let doubleValue = Double(newText), doubleValue <= maxAmountAvailable {
+            return true
+        }
+        return false
+    }
+    
     var editingExpense: Expense? {
         didSet {
             // Update the view.
@@ -145,7 +167,27 @@ class AddExpensesViewController: UITableViewController, UIPopoverPresentationCon
     
     
     @IBAction func btnPressedAdd(_ sender: UIBarButtonItem) {
+        //let triggerDate =  Calendar.current.dateComponents([.weekday,.hour,.minute], from: date as Date)
         print("chaveen")
+//        let content = UNMutableNotificationContent()
+//        content.badge = 1
+//        content.title = "Pending Payment"
+//        content.sound = .default
+//        content.body = "Your a expense in categiry b due date is going to end soon. Please pay amout"
+//
+//
+//        let targetDate = datePicker.date
+//        let trigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.hour, .minute],
+//                                                                                                  from: targetDate),repeats: true)
+//
+//        let request = UNNotificationRequest(identifier: "some_long_id", content: content, trigger: trigger)
+//        UNUserNotificationCenter.current().add(request, withCompletionHandler: { error in
+//            if error != nil {
+//                print("something went wrong")
+//            }
+//        })
+        
+//        dismissAddProjectPopOver()
         if validateUserInputs() {
 
             var calendarIdentifier = ""
@@ -169,7 +211,7 @@ class AddExpensesViewController: UITableViewController, UIPopoverPresentationCon
             let entity = NSEntityDescription.entity(forEntityName: "Expense", in: managedContext)!
 
 
-           // var expense = NSManagedObject.init(entity: entity, insertInto: managedContext)
+            // var expense = NSManagedObject.init(entity: entity, insertInto: managedContext)
             var expense = NSManagedObject()
 
             if editingMode {
@@ -178,17 +220,21 @@ class AddExpensesViewController: UITableViewController, UIPopoverPresentationCon
                 expense = NSManagedObject(entity: entity, insertInto: managedContext)
             }
 
+
             if addToCalendarFlag {
+
                 if editingMode {
                     if let expense = editingExpense {
                         if !expense.addToCalendar {
                             if (EKEventStore.authorizationStatus(for: .event) != EKAuthorizationStatus.authorized) {
                                 eventStore.requestAccess(to: .event, completion: {
                                     granted, error in
-                                    calendarIdentifier = self.createEvent(eventStore, title: expenseName!, eventDate: endDate, occurrence: "endDate")
+                                    calendarIdentifier = self.createEvent(eventStore, title: expenseName!, eventDate: endDate, occurrence: occurrence)
+
                                 })
                             } else {
-                                calendarIdentifier = createEvent(eventStore, title: expenseName!, eventDate: endDate, occurrence: "endDate")
+                                calendarIdentifier = createEvent(eventStore, title: expenseName!, eventDate: endDate, occurrence: occurrence)
+
                             }
                         }
                     }
@@ -196,10 +242,12 @@ class AddExpensesViewController: UITableViewController, UIPopoverPresentationCon
                     if (EKEventStore.authorizationStatus(for: .event) != EKAuthorizationStatus.authorized) {
                         eventStore.requestAccess(to: .event, completion: {
                             granted, error in
-                            calendarIdentifier = self.createEvent(eventStore, title: expenseName!, eventDate: endDate, occurrence: "endDate")
+                            calendarIdentifier = self.createEvent(eventStore, title: expenseName!, eventDate: endDate, occurrence: occurrence)
+
                         })
                     } else {
-                        calendarIdentifier = createEvent(eventStore, title: expenseName!, eventDate: endDate, occurrence: "endDate")
+                        calendarIdentifier = createEvent(eventStore, title: expenseName!, eventDate: endDate, occurrence: occurrence)
+
                     }
                 }
                 if calendarIdentifier != "" {
@@ -230,9 +278,19 @@ class AddExpensesViewController: UITableViewController, UIPopoverPresentationCon
             expense.setValue(amount, forKeyPath: "amount")
             expense.setValue(notes, forKeyPath: "notes")
 
+            var totalAmountSpend : Double = 0.0
+            var expenses = (selectedCategory!.expense!.allObjects as! [Expense])
+
+            for index in expenses.indices {
+                totalAmountSpend = totalAmountSpend + Double(expenses[index].amount)
+            }
+            var maxAmountAvailable = 0.0
+
             if editingMode {
                 expense.setValue(editingExpense?.endDate, forKeyPath: "endDate")
+                maxAmountAvailable = selectedCategory!.budget - (totalAmountSpend - amount!)
             } else {
+                maxAmountAvailable = selectedCategory!.budget - totalAmountSpend
                 expense.setValue(endDate, forKeyPath: "endDate")
             }
 
@@ -241,22 +299,24 @@ class AddExpensesViewController: UITableViewController, UIPopoverPresentationCon
             expense.setValue(occurrence, forKeyPath: "occurrence")
             expense.setValue(calendarIdentifier, forKey: "calendarIdentifier")
 
-            selectedCategory?.addToExpense((expense as? Expense)!)
+            if (Double((amountTextField.text)!)! <= maxAmountAvailable){
+                selectedCategory?.addToExpense((expense as? Expense)!)
 
-            do {
+                do {
+                    try managedContext.save()
+                    expenses.append(expense as! Expense)
 
-                try managedContext.save()
-                expenses.append(expense)
-
-            } catch _ as NSError {
-                displayAlertView(alertTitle: "Error", alertDescription: "An error occured while saving the expense.")
+                } catch _ as NSError {
+                    displayAlertView(alertTitle: "Error", alertDescription: "An error occured while saving the expense.")
+                }
+                dismissAddProjectPopOver()
+            } else {
+                showToast(message: "Max Amount Available is \(maxAmountAvailable)", seconds: 0.9)
             }
 
         } else {
             displayAlertView(alertTitle: "Error", alertDescription: "Please fill the required fields.")
         }
-
-      dismissAddProjectPopOver()
         
     }
     
@@ -264,15 +324,42 @@ class AddExpensesViewController: UITableViewController, UIPopoverPresentationCon
     func createEvent(_ eventStore: EKEventStore, title: String, eventDate: Date, occurrence: String) -> String {
         let event = EKEvent(eventStore: eventStore)
         var identifier = ""
-        
+
         event.title = title
         event.startDate = eventDate
         event.endDate = eventDate.addingTimeInterval(3600 as TimeInterval)
         event.calendar = eventStore.defaultCalendarForNewEvents
         
-        let recurrenceRule =  EKRecurrenceRule.init(recurrenceWith: .monthly , interval: 1, end: EKRecurrenceEnd.init(end:eventDate.addingTimeInterval(3600 as TimeInterval)))
+        let content = UNMutableNotificationContent()
+        content.badge = 1
+        content.title = "Pending Payment"
+        content.sound = .default
+        content.body = "Your a expense in categiry b due date is going to end soon. Please pay amout"
         
-        event.recurrenceRules = [recurrenceRule]
+        
+        let targetDate = eventDate
+        var trigger:UNCalendarNotificationTrigger?
+        
+        if (occurrence == "One"){
+            trigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second],
+                                                                                                      from: targetDate),repeats: false)
+        } else if (occurrence == "Daliy"){
+            let recurrenceRule =  EKRecurrenceRule.init(recurrenceWith: .daily, interval: 1, end: EKRecurrenceEnd.init(end:eventDate.addingTimeInterval(3600 as TimeInterval)))
+            event.recurrenceRules = [recurrenceRule]
+            trigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.hour, .minute],
+                                                                                                      from: targetDate),repeats: true)
+        } else if (occurrence == "Weekly"){
+            let recurrenceRule =  EKRecurrenceRule.init(recurrenceWith: .weekly, interval: 1, end: EKRecurrenceEnd.init(end:eventDate.addingTimeInterval(3600 as TimeInterval)))
+            event.recurrenceRules = [recurrenceRule]
+            trigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.weekday ,.hour, .minute],
+                                                                                                      from: targetDate),repeats: true)
+        } else if (occurrence == "Monthly"){
+            let recurrenceRule =  EKRecurrenceRule.init(recurrenceWith: .monthly, interval: 1, end: EKRecurrenceEnd.init(end:eventDate.addingTimeInterval(3600 as TimeInterval)))
+            event.recurrenceRules = [recurrenceRule]
+            trigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.month, .weekday ,.hour, .minute],
+                                                                                                      from: targetDate),repeats: true)
+        }
+        
         
         do {
             try eventStore.save(event, span: .thisEvent)
@@ -282,6 +369,13 @@ class AddExpensesViewController: UITableViewController, UIPopoverPresentationCon
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
+        
+        let request = UNNotificationRequest(identifier: "some_long_id", content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: { error in
+            if error != nil {
+                print("something went wrong")
+            }
+        })
         
         return identifier
     }
@@ -304,6 +398,7 @@ class AddExpensesViewController: UITableViewController, UIPopoverPresentationCon
         return sucess
     }
     
+    
     // Handles the add button enable state
     func addButtonEnability() {
         if validateUserInputs() {
@@ -320,6 +415,24 @@ class AddExpensesViewController: UITableViewController, UIPopoverPresentationCon
         }
         return false
     }
+    
+    func validateAmount() -> Bool {
+        var totalAmountSpend : Double = 0.0
+        let expenses = (selectedCategory!.expense!.allObjects as! [Expense])
+        
+        for index in expenses.indices {
+            totalAmountSpend = totalAmountSpend + Double(expenses[index].amount)
+        }
+        
+        let maxAmountAvailable = selectedCategory!.budget - totalAmountSpend
+        if (Double((amountTextField.text)!)! <= maxAmountAvailable){
+            return true
+        } else {
+            showToast(message: "Max Amount Available is \(maxAmountAvailable)", seconds: 0.8)
+            return false
+        }
+    }
+    
     
     @IBAction func handleExpenseNameChange(_ sender: UITextField) {
         addButtonEnability()
@@ -376,7 +489,7 @@ extension AddExpensesViewController {
             notesTextView.becomeFirstResponder()
         }
         
-     
+        
         tableView.beginUpdates()
         tableView.endUpdates()
     }

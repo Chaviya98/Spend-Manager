@@ -24,6 +24,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
         
+        
         // initializing the custom cell
         let nibName = UINib(nibName: "CustomCellCategory", bundle: nil)
         tableView.register(nibName, forCellReuseIdentifier: "CategoryCell")

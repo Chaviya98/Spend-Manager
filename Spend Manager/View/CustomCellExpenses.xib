@@ -20,7 +20,7 @@
                         <rect key="frame" x="8" y="8" width="632" height="129"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="4fI-qL-3v4">
-                                <rect key="frame" x="0.0" y="0.0" width="322" height="91"/>
+                                <rect key="frame" x="0.0" y="0.0" width="322" height="96"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="GNk-6u-OpY">
                                         <rect key="frame" x="0.0" y="0.0" width="322" height="20.5"/>
@@ -64,7 +64,7 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 Days Left" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WrX-bd-aEd">
-                                        <rect key="frame" x="0.0" y="70.5" width="86.5" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="70.5" width="86.5" height="25.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -78,9 +78,9 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ors-FA-tX6" customClass="LinearProgressBar" customModule="Spend_Manager" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="99" width="452" height="30"/>
+                                <rect key="frame" x="0.0" y="104" width="452" height="15"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Xig-GQ-HFk"/>
+                                    <constraint firstAttribute="height" constant="15" id="Xig-GQ-HFk"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -88,7 +88,7 @@
                             <constraint firstItem="lzM-R5-WE1" firstAttribute="leading" secondItem="ors-FA-tX6" secondAttribute="trailing" constant="30" id="IeK-B1-knW"/>
                             <constraint firstItem="lzM-R5-WE1" firstAttribute="top" secondItem="k9q-Pn-R0Q" secondAttribute="top" id="NNf-gw-cZh"/>
                             <constraint firstAttribute="bottom" secondItem="lzM-R5-WE1" secondAttribute="bottom" id="ZCr-Jh-Q3A"/>
-                            <constraint firstAttribute="bottom" secondItem="ors-FA-tX6" secondAttribute="bottom" id="asD-Va-1Uh"/>
+                            <constraint firstAttribute="bottom" secondItem="ors-FA-tX6" secondAttribute="bottom" constant="10" id="blG-Dt-h2G"/>
                             <constraint firstItem="ors-FA-tX6" firstAttribute="top" secondItem="4fI-qL-3v4" secondAttribute="bottom" constant="8" id="h6f-or-p8N"/>
                             <constraint firstItem="lzM-R5-WE1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="4fI-qL-3v4" secondAttribute="trailing" constant="20" id="hAE-3i-u0y"/>
                             <constraint firstItem="4fI-qL-3v4" firstAttribute="top" secondItem="k9q-Pn-R0Q" secondAttribute="top" id="ibn-VZ-xjc"/>

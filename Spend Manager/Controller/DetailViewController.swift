@@ -11,11 +11,10 @@ import CoreData
 import EventKit
 import Charts
 
-class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate {
-    
-    let players = ["Ozil", "Ramsey", "Laca", "Auba", "Xhaka", "Torreira"]
-    let goals = [6, 8, 26, 30, 8, 10]
-    
+class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate, ChartViewDelegate {
+
+    let players = ["Ozil", "Ramsey", "Laca"]
+    let goals = [6, 8, 26]
     
     @IBOutlet weak var categoryNameLabel: UILabel!
     @IBOutlet weak var totalBudgetLabel: UILabel!
@@ -46,8 +45,10 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       // customizeChart(dataPoints: players, values: goals.map{ Double($0) })
         // Configure the view
+        pieChartView.delegate = self
+    
+     
         expenseTable.delegate = self
         expenseTable.dataSource = self
         configureView()
@@ -63,7 +64,28 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
         let nibName = UINib(nibName: "CustomCellExpenses", bundle: nil)
         expenseTable.register(nibName, forCellReuseIdentifier: "ExpenseCell")
         
-
+        if let category = selectedCategory {
+            pieChartView.centerText = selectedCategory?.name
+            let expenses = (category.expense!.allObjects as! [Expense])
+            
+            var expensesNameArray : [String] = []
+            var expensesAmountArray : [Double] = []
+            
+            print("names \(expensesNameArray)")
+            print("amouts \(expensesAmountArray)")
+            
+            for index in expenses.indices {
+                expensesNameArray.append(expenses[index].name!)
+                expensesAmountArray.append(expenses[index].amount)
+            }
+            
+            
+            if selectedCategory != nil && !expensesNameArray.isEmpty && !expensesAmountArray.isEmpty && !expenses.isEmpty {
+                customizeChart(dataPoints: expensesNameArray, values: expensesAmountArray)
+            }
+        }
+       
+        //customizeChart(dataPoints: players, values: goals.map{ Double($0) })
     }
     
  
@@ -77,8 +99,29 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
                 totalBudgetLabel.text = String(category.budget)
             }
             
+            let expenses = (category.expense!.allObjects as! [Expense])
+            
+            var totalAmountSpend : Double = 0.0
+            
+            for index in expenses.indices {
+                totalAmountSpend = totalAmountSpend + Double(expenses[index].amount)
+            }
+            
+            if let spendBudgetLabel = spendBudgetLabel {
+                spendBudgetLabel.text = String(totalAmountSpend)
+            }
+            
+            let remainingBudget = category.budget - totalAmountSpend
+            
+            if let remainingBudgetLabel = remainingBudgetLabel {
+                remainingBudgetLabel.text = String(remainingBudget)
+            }
             
         }
+//        
+//        if selectedCategory == nil {
+//            customizeChart(dataPoints: players, values: goals.map{ Double($0) })
+//        }
     }
     
     func customizeChart(dataPoints: [String], values: [Double]) {
@@ -101,6 +144,7 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
         let formatter = DefaultValueFormatter(formatter: format)
         pieChartData.setValueFormatter(formatter)
         
+       
         // 4. Assign it to the chart's data
         pieChartView.data = pieChartData
     }
@@ -308,7 +352,7 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
     
     func configureCell(_ cell: CustomCellExpenses, withExpense expense: Expense, index: Int) {
         //print("Related Project", task.project)
-        cell.commonInt(index + 1, expensesName:expense.name!, expensesAmount :expense.amount, startDate:expense.startDate! as Date, dueDate:expense.endDate! as Date, notes:expense.notes!)
+        cell.commonInt(index + 1, expensesName:expense.name!, expensesAmount :expense.amount, startDate:expense.startDate! as Date, dueDate:expense.endDate! as Date, notes:expense.notes!, budget:selectedCategory!.budget)
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {

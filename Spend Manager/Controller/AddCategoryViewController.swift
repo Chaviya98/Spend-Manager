@@ -36,8 +36,10 @@ class AddCategoryViewController: UITableViewController, UITextViewDelegate {
         setupUI()
         
         if !editingMode {
+            // Settings the placeholder for notes UITextView
             notesTextView.delegate = self
             notesTextView.text = "Notes"
+            notesTextView.textColor = UIColor.lightGray
             colorCode = "#dbd9d9"
             selectBackgroundColorButton(colorCode:self.colorCode)
         }
@@ -81,7 +83,6 @@ class AddCategoryViewController: UITableViewController, UITextViewDelegate {
             self.navigationItem.rightBarButtonItem?.title = "Edit"
         }
         
-        print(buttonArray.count)
         
         if editingCategory != nil {
             if let categoryName = categoryNameTextField {
@@ -96,7 +97,7 @@ class AddCategoryViewController: UITableViewController, UITextViewDelegate {
             }
             
             colorCode = (editingCategory?.color)!
-            selectBackgroundColorButton(colorCode:self.colorCode)
+            //selectBackgroundColorButton(colorCode:self.colorCode)
         }
     }
     

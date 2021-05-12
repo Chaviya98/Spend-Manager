@@ -19,7 +19,7 @@ class CustomCellExpenses: UITableViewCell {
     let colors:Colors = Colors()
     let formatter: Formatter = Formatter()
     let calculations : DateTimeCalculations = DateTimeCalculations()
-    
+    let reminderCalculations : ReminderCalculations = ReminderCalculations()
     
     @IBOutlet weak var lblExpensesNo: UILabel!
     @IBOutlet weak var lblExpensesName: UILabel!
@@ -46,10 +46,11 @@ class CustomCellExpenses: UITableViewCell {
     }
     
     
-    func commonInt(_ expensesNo:Int, expensesName:String, expensesAmount :Double, startDate:Date, dueDate:Date, notes:String){
+    func commonInt(_ expensesNo:Int, expensesName:String, expensesAmount :Double, startDate:Date, dueDate:Date, notes:String , budget:Double){
         
         let (daysLeft, hoursLeft, minutesLeft) = calculations.getTimeDifference(now, end: dueDate)
         let remainingDaysPercentage = calculations.getRemainingTime(startDate, end: dueDate)
+        let remainingBudgetPercentage = reminderCalculations.getRemainingBudget(budget, amount: expensesAmount)
         
         lblExpensesName.text = expensesName
         lblExpensesNo.text = String(expensesNo)
@@ -58,10 +59,10 @@ class CustomCellExpenses: UITableViewCell {
         lblDaysLeft.text = "\(daysLeft) Days \(hoursLeft) Hours \(minutesLeft) Minutes Remaining"
         
         DispatchQueue.main.async {
-            let colours = self.colors.getProgressGradient(remainingDaysPercentage, negative: true)
+            let colours = self.colors.getProgressGradient(remainingBudgetPercentage, negative: true)
             self.budgetCircularProgressBar.startGradientColor = colours[0]
             self.budgetCircularProgressBar.endGradientColor = colours[1]
-            self.budgetCircularProgressBar.progress = CGFloat(remainingDaysPercentage) / 100
+            self.budgetCircularProgressBar.progress = CGFloat(remainingBudgetPercentage) / 100
         }
 
         DispatchQueue.main.async {
