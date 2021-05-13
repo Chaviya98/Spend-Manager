@@ -64,30 +64,58 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
         let nibName = UINib(nibName: "CustomCellExpenses", bundle: nil)
         expenseTable.register(nibName, forCellReuseIdentifier: "ExpenseCell")
         
+        createPieChartDataSet()
+        //customizeChart(dataPoints: players, values: goals.map{ Double($0) })
+    }
+    
+    private func createPieChartDataSet() {
+        
         if let category = selectedCategory {
             pieChartView.centerText = selectedCategory?.name
             let expenses = (category.expense!.allObjects as! [Expense])
             
             var expensesNameArray : [String] = []
             var expensesAmountArray : [Double] = []
+            var totalAmountSpend : Double = 0.0
+            var otherAmount : Double = 0.0
+            
+            for index in expenses.indices {
+                totalAmountSpend = totalAmountSpend + Double(expenses[index].amount)
+            }
+            
+            if (expenses.count <= 4){
+                for index in expenses.indices {
+                    expensesNameArray.append(expenses[index].name!)
+                    expensesAmountArray.append(expenses[index].amount)
+                }
+            } else {
+                for index in expenses.indices {
+                    if(index <= 3){
+                        expensesNameArray.append(expenses[index].name!)
+                        expensesAmountArray.append(expenses[index].amount)
+                    } else {
+                        otherAmount = otherAmount + expenses[index].amount
+                    }
+                    
+                }
+                
+                expensesNameArray.append("Others")
+                expensesAmountArray.append(otherAmount)
+            }
+            
+            expensesNameArray.append("Remaining")
+            expensesAmountArray.append(category.budget - totalAmountSpend)
             
             print("names \(expensesNameArray)")
             print("amouts \(expensesAmountArray)")
-            
-            for index in expenses.indices {
-                expensesNameArray.append(expenses[index].name!)
-                expensesAmountArray.append(expenses[index].amount)
-            }
             
             
             if selectedCategory != nil && !expensesNameArray.isEmpty && !expensesAmountArray.isEmpty && !expenses.isEmpty {
                 customizeChart(dataPoints: expensesNameArray, values: expensesAmountArray)
             }
         }
-       
-        //customizeChart(dataPoints: players, values: goals.map{ Double($0) })
+        
     }
-    
  
     func configureView() {
         // Update the user interface for the detail item.
@@ -352,7 +380,7 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
     
     func configureCell(_ cell: CustomCellExpenses, withExpense expense: Expense, index: Int) {
         //print("Related Project", task.project)
-        cell.commonInt(index + 1, expensesName:expense.name!, expensesAmount :expense.amount, startDate:expense.startDate! as Date, dueDate:expense.endDate! as Date, notes:expense.notes!, budget:selectedCategory!.budget)
+        cell.commonInt(index + 1, expensesName:expense.name!, expensesAmount :expense.amount, startDate:expense.startDate! as Date, dueDate:expense.endDate! as Date, notes:expense.notes!, budget:selectedCategory!.budget,occurrence: expense.occurrence!)
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {

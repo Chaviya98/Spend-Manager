@@ -39,7 +39,7 @@ class CustomCellCategory: UITableViewCell {
     
     func commonInt(_ categoryName: String, budgetValue:Double, notes :String, color :String){
         self.categoryName.text = categoryName
-        self.budgetValue.text = String(budgetValue)
+        self.budgetValue.text = "$ \(String(budgetValue))"
         self.cellContentView.backgroundColor = colors.hexStringToUIColor(hex: color)
         self.notes = notes
     }

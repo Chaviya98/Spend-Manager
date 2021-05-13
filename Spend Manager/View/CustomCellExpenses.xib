@@ -46,7 +46,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Aap-Z8-XQZ">
-                                        <rect key="frame" x="0.0" y="34.5" width="111" height="22"/>
+                                        <rect key="frame" x="0.0" y="34.5" width="220.5" height="22"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MTH-9B-oTe">
                                                 <rect key="frame" x="0.0" y="0.0" width="20" height="22"/>
@@ -57,6 +57,12 @@
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CeM-sj-EEC">
                                                 <rect key="frame" x="40" y="0.0" width="71" height="22"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Occurrence" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="njo-Wg-aq5">
+                                                <rect key="frame" x="131" y="0.0" width="89.5" height="22"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -115,6 +121,7 @@
                 <outlet property="lblExpensesAmount" destination="8l3-jt-DhD" id="153-6E-2R7"/>
                 <outlet property="lblExpensesName" destination="E2i-Z4-V67" id="KPw-Lc-k1F"/>
                 <outlet property="lblExpensesNo" destination="CwO-Pu-tr0" id="gcw-hB-hjz"/>
+                <outlet property="lblOccurrence" destination="njo-Wg-aq5" id="L1l-Fc-KUx"/>
             </connections>
             <point key="canvasLocation" x="231.8840579710145" y="41.852678571428569"/>
         </tableViewCell>

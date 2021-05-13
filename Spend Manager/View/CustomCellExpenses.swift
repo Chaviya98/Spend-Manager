@@ -25,6 +25,7 @@ class CustomCellExpenses: UITableViewCell {
     @IBOutlet weak var lblExpensesName: UILabel!
     @IBOutlet weak var lblExpensesAmount: UILabel!
     @IBOutlet weak var lblDueDate: UILabel!
+    @IBOutlet weak var lblOccurrence: UILabel!
     @IBOutlet weak var lblDaysLeft: UILabel!
     @IBOutlet weak var budgetCircularProgressBar: CircularProgressBar!
     @IBOutlet weak var btnInfor: UIButton!
@@ -46,7 +47,7 @@ class CustomCellExpenses: UITableViewCell {
     }
     
     
-    func commonInt(_ expensesNo:Int, expensesName:String, expensesAmount :Double, startDate:Date, dueDate:Date, notes:String , budget:Double){
+    func commonInt(_ expensesNo:Int, expensesName:String, expensesAmount :Double, startDate:Date, dueDate:Date, notes:String , budget:Double , occurrence:String){
         
         let (daysLeft, hoursLeft, minutesLeft) = calculations.getTimeDifference(now, end: dueDate)
         let remainingDaysPercentage = calculations.getRemainingTime(startDate, end: dueDate)
@@ -57,6 +58,10 @@ class CustomCellExpenses: UITableViewCell {
         lblExpensesAmount.text = String(expensesAmount)
         lblDueDate.text = "Due: \(formatter.formatDate(dueDate))"
         lblDaysLeft.text = "\(daysLeft) Days \(hoursLeft) Hours \(minutesLeft) Minutes Remaining"
+        
+        if (occurrence != ""){
+            lblOccurrence.text = occurrence
+        }
         
         DispatchQueue.main.async {
             let colours = self.colors.getProgressGradient(remainingBudgetPercentage, negative: true)
