@@ -13,9 +13,6 @@ import Charts
 
 class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate, ChartViewDelegate {
 
-    let players = ["Ozil", "Ramsey", "Laca"]
-    let goals = [6, 8, 26]
-    
     @IBOutlet weak var categoryNameLabel: UILabel!
     @IBOutlet weak var totalBudgetLabel: UILabel!
     @IBOutlet weak var spendBudgetLabel: UILabel!
@@ -65,7 +62,7 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
         expenseTable.register(nibName, forCellReuseIdentifier: "ExpenseCell")
         
         createPieChartDataSet()
-        //customizeChart(dataPoints: players, values: goals.map{ Double($0) })
+        
     }
     
     private func createPieChartDataSet() {
@@ -146,10 +143,10 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
             }
             
         }
-//        
-//        if selectedCategory == nil {
-//            customizeChart(dataPoints: players, values: goals.map{ Double($0) })
-//        }
+
+        if selectedCategory == nil {
+
+       }
     }
     
     func customizeChart(dataPoints: [String], values: [Double]) {
