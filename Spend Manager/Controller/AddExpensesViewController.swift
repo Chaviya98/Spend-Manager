@@ -15,7 +15,7 @@ enum OccurrenceTypes: Int {
     case One, Daliy, Weekly, Monthly
 }
 
-class AddExpensesViewController: UITableViewController, UIPopoverPresentationControllerDelegate, UITextViewDelegate {
+class AddExpensesViewController: UITableViewController, UIPopoverPresentationControllerDelegate, UITextViewDelegate, UNUserNotificationCenterDelegate {
     
     
     var expenses: [NSManagedObject] = []
@@ -26,7 +26,7 @@ class AddExpensesViewController: UITableViewController, UIPopoverPresentationCon
     var editingMode: Bool = false
     var occurrenceType = ""
     let now = Date()
-    
+    let notificationCenter = UNUserNotificationCenter.current()
     let formatter: Formatter = Formatter()
 
     
@@ -42,7 +42,8 @@ class AddExpensesViewController: UITableViewController, UIPopoverPresentationCon
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        // Configure User Notification Center
+        notificationCenter.delegate = self
         
         if !editingMode {
             // Set start date to current
@@ -167,25 +168,62 @@ class AddExpensesViewController: UITableViewController, UIPopoverPresentationCon
     
     
     @IBAction func btnPressedAdd(_ sender: UIBarButtonItem) {
-        //let triggerDate =  Calendar.current.dateComponents([.weekday,.hour,.minute], from: date as Date)
-        print("chaveen")
-//        let content = UNMutableNotificationContent()
-//        content.badge = 1
-//        content.title = "Pending Payment"
-//        content.sound = .default
-//        content.body = "Your a expense in categiry b due date is going to end soon. Please pay amout"
+//        notificationCenter.getNotificationSettings { (notificationSettings) in
+//            switch notificationSettings.authorizationStatus {
+//            case .notDetermined:
+//                self.requestAuthorization(completionHandler: { (success) in
+//                    guard success else { return }
+//                    print("Scheduling Notifications")
+//                    // Schedule Local Notification
+//                    let content = UNMutableNotificationContent()
+//                    content.title = "Pending Payment"
+//                    content.sound = .default
+//                    content.body = "Your a expense in categiry b due date is going to end soon. Please pay amout"
 //
 //
-//        let targetDate = datePicker.date
-//        let trigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.hour, .minute],
-//                                                                                                  from: targetDate),repeats: true)
+//                    let targetDate = self.datePicker.date
+//                   let trigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.hour, .minute],
+//                                                                                                              from: targetDate),repeats: true)
 //
-//        let request = UNNotificationRequest(identifier: "some_long_id", content: content, trigger: trigger)
-//        UNUserNotificationCenter.current().add(request, withCompletionHandler: { error in
-//            if error != nil {
-//                print("something went wrong")
+//                    let request = UNNotificationRequest(identifier: "some_long_id", content: content, trigger: trigger)
+//                    UNUserNotificationCenter.current().add(request, withCompletionHandler: { error in
+//                        if error != nil {
+//                            print("something went wrong")
+//                        }
+//                    })
+//                    print("Scheduled Notifications")
+//                })
+//            case .authorized:
+//                let content = UNMutableNotificationContent()
+//                // Schedule Local Notification     let content = UNMutableNotificationContent()
+//                content.title = "Pending Payment"
+//                content.sound = .default
+//                content.body = "Your a expense in categiry b due date is going to end soon. Please pay amout"
+//
+//
+//                let targetDate = self.datePicker.date
+//               let trigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.hour, .minute],
+//                                                                                                          from: targetDate),repeats: true)
+//
+//                let request = UNNotificationRequest(identifier: "some_long_id", content: content, trigger: trigger)
+//                UNUserNotificationCenter.current().add(request, withCompletionHandler: { error in
+//                    if error != nil {
+//                        print("something went wrong")
+//                    }
+//                })
+//                print("Scheduled Notifications")
+//            case .denied:
+//                print("Application Not Allowed to Display Notifications")
+//            case .provisional:
+//                print("Application Not Allowed to Display Notifications")
+//            case .ephemeral:
+//                print("Application Not Allowed to Display Notifications")
 //            }
-//        })
+//        }
+        
+   // let triggerDate =  Calendar.current.dateComponents([.weekday,.hour,.minute], from: date as Date)
+        print("chaveen")
+   
         
 //        dismissAddProjectPopOver()
         if validateUserInputs() {
@@ -229,11 +267,11 @@ class AddExpensesViewController: UITableViewController, UIPopoverPresentationCon
                             if (EKEventStore.authorizationStatus(for: .event) != EKAuthorizationStatus.authorized) {
                                 eventStore.requestAccess(to: .event, completion: {
                                     granted, error in
-                                    calendarIdentifier = self.createEvent(eventStore, title: expenseName!, eventDate: endDate, occurrence: occurrence)
+                                    calendarIdentifier = self.createEvent(eventStore, title: expenseName!, eventDate: endDate, occurrence: occurrence,amount: amount!,categoryName: (self.selectedCategory?.name)!)
 
                                 })
                             } else {
-                                calendarIdentifier = createEvent(eventStore, title: expenseName!, eventDate: endDate, occurrence: occurrence)
+                                calendarIdentifier = createEvent(eventStore, title: expenseName!, eventDate: endDate, occurrence: occurrence,amount: amount!,categoryName: (self.selectedCategory?.name)!)
 
                             }
                         }
@@ -242,11 +280,11 @@ class AddExpensesViewController: UITableViewController, UIPopoverPresentationCon
                     if (EKEventStore.authorizationStatus(for: .event) != EKAuthorizationStatus.authorized) {
                         eventStore.requestAccess(to: .event, completion: {
                             granted, error in
-                            calendarIdentifier = self.createEvent(eventStore, title: expenseName!, eventDate: endDate, occurrence: occurrence)
+                            calendarIdentifier = self.createEvent(eventStore, title: expenseName!, eventDate: endDate, occurrence: occurrence,amount: amount!,categoryName: (self.selectedCategory?.name)!)
 
                         })
                     } else {
-                        calendarIdentifier = createEvent(eventStore, title: expenseName!, eventDate: endDate, occurrence: occurrence)
+                        calendarIdentifier = createEvent(eventStore, title: expenseName!, eventDate: endDate, occurrence: occurrence,amount: amount!,categoryName: (self.selectedCategory?.name)!)
 
                     }
                 }
@@ -321,7 +359,7 @@ class AddExpensesViewController: UITableViewController, UIPopoverPresentationCon
     }
     
     // Creates an event in the EKEventStore
-    func createEvent(_ eventStore: EKEventStore, title: String, eventDate: Date, occurrence: String) -> String {
+    func createEvent(_ eventStore: EKEventStore, title: String, eventDate: Date, occurrence: String, amount: Double, categoryName: String) -> String {
         let event = EKEvent(eventStore: eventStore)
         var identifier = ""
 
@@ -331,10 +369,9 @@ class AddExpensesViewController: UITableViewController, UIPopoverPresentationCon
         event.calendar = eventStore.defaultCalendarForNewEvents
         
         let content = UNMutableNotificationContent()
-        content.badge = 1
         content.title = "Pending Payment"
         content.sound = .default
-        content.body = "Your a expense in categiry b due date is going to end soon. Please pay amout"
+        content.body = "Your \(title) expense in category \(categoryName) due date is going to end soon. Please pay $ \(amount)"
         
         
         let targetDate = eventDate
@@ -370,12 +407,37 @@ class AddExpensesViewController: UITableViewController, UIPopoverPresentationCon
             self.present(alert, animated: true, completion: nil)
         }
         
-        let request = UNNotificationRequest(identifier: "some_long_id", content: content, trigger: trigger)
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: { error in
-            if error != nil {
-                print("something went wrong")
+        notificationCenter.getNotificationSettings { (notificationSettings) in
+            switch notificationSettings.authorizationStatus {
+            case .notDetermined:
+                self.requestAuthorization(completionHandler: { (success) in
+                    guard success else { return }
+    
+                    let request = UNNotificationRequest(identifier: "\(UUID().uuidString)", content: content, trigger: trigger)
+                    UNUserNotificationCenter.current().add(request, withCompletionHandler: { error in
+                        if error != nil {
+                            print("something went wrong")
+                        }
+                    })
+                    print("Scheduled Notifications")
+                })
+            case .authorized:
+             let request = UNNotificationRequest(identifier: "\(UUID().uuidString)", content: content, trigger: trigger)
+                UNUserNotificationCenter.current().add(request, withCompletionHandler: { error in
+                    if error != nil {
+                        print("something went wrong")
+                    }
+                })
+                print("Scheduled Notifications")
+            case .denied:
+                print("Application Not Allowed to Display Notifications")
+            case .provisional:
+                print("Application Not Allowed to Display Notifications")
+            case .ephemeral:
+                print("Application Not Allowed to Display Notifications")
             }
-        })
+        }
+
         
         return identifier
     }
@@ -414,6 +476,16 @@ class AddExpensesViewController: UITableViewController, UIPopoverPresentationCon
             return true
         }
         return false
+    }
+    
+    func requestAuthorization(completionHandler: @escaping (_ success: Bool) -> ()) {
+        // Request Authorization
+        notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { (success, error) in
+            if let error = error {
+                print("Request Authorization Failed (\(error), \(error.localizedDescription))")
+            }
+            completionHandler(success)
+        }
     }
     
     func validateAmount() -> Bool {

@@ -7,14 +7,28 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate{
 
-
+    let notificationCenter = UNUserNotificationCenter.current()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        UNUserNotificationCenter.current().requestAuthorization(options:
+            [.alert,.sound])
+        {
+            (sucess,error) in
+            if error != nil {
+                print("Error Found, \(error?.localizedDescription ?? "")")
+                
+            } else {
+                print("Authorized by the user")
+            }
+        }
+        
+        UNUserNotificationCenter.current().delegate = self
         return true
     }
 
