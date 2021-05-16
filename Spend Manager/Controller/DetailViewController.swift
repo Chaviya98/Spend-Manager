@@ -103,9 +103,6 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
             expensesNameArray.append("Remaining")
             expensesAmountArray.append(category.budget - totalAmountSpend)
             
-            print("names \(expensesNameArray)")
-            print("amouts \(expensesAmountArray)")
-            
             
             if selectedCategory != nil && !expensesNameArray.isEmpty && !expensesAmountArray.isEmpty && !expenses.isEmpty {
                 customizeChart(dataPoints: expensesNameArray, values: expensesAmountArray)
