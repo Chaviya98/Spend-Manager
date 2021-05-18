@@ -15,7 +15,7 @@ class AddCategoryViewController: UITableViewController, UITextViewDelegate {
     let colors:Colors = Colors()
     var categories: [NSManagedObject] = []
     var buttonArray : [UIButton] = []
-    var colorsArray : [String] = ["#dbd9d9","#d3b5e8","#edd8be","#c3ebc3","#eccbf2","#c3e6e5","#e7ebc5"]
+    var colorsArray : [String] = ["#DBD9D9","#D3B5E8","#EDD8BE","#C3EBC3","#ECCBF2","#C3E6E5","#E7EBC5"]
     
     @IBOutlet weak var categoryNameTextField: UITextField!
     @IBOutlet weak var budgetTextField: UITextField!
@@ -40,7 +40,7 @@ class AddCategoryViewController: UITableViewController, UITextViewDelegate {
             notesTextView.delegate = self
             notesTextView.text = "Notes"
             notesTextView.textColor = UIColor.lightGray
-            colorCode = "#dbd9d9"
+            colorCode = "#DBD9D9"
             selectBackgroundColorButton(colorCode:self.colorCode)
         }
         
@@ -50,13 +50,13 @@ class AddCategoryViewController: UITableViewController, UITextViewDelegate {
     
     
     func setupUI() {
-        backgroundColorbtn1.backgroundColor = colors.hexStringToUIColor(hex: "#dbd9d9")
-        backgroundColorbtn2.backgroundColor = colors.hexStringToUIColor(hex: "#d3b5e8")
-        backgroundColorbtn3.backgroundColor = colors.hexStringToUIColor(hex: "#edd8be")
-        backgroundColorbtn4.backgroundColor = colors.hexStringToUIColor(hex: "#c3ebc3")
-        backgroundColorbtn5.backgroundColor = colors.hexStringToUIColor(hex: "#eccbf2")
-        backgroundColorbtn6.backgroundColor = colors.hexStringToUIColor(hex: "#c3e6e5")
-        backgroundColorbtn7.backgroundColor = colors.hexStringToUIColor(hex: "#e7ebc5")
+        backgroundColorbtn1.backgroundColor = colors.hexStringToUIColor(hex: "#DBD9D9")
+        backgroundColorbtn2.backgroundColor = colors.hexStringToUIColor(hex: "#D3B5E8")
+        backgroundColorbtn3.backgroundColor = colors.hexStringToUIColor(hex: "#EDD8BE")
+        backgroundColorbtn4.backgroundColor = colors.hexStringToUIColor(hex: "#C3EBC3")
+        backgroundColorbtn5.backgroundColor = colors.hexStringToUIColor(hex: "#ECCBF2")
+        backgroundColorbtn6.backgroundColor = colors.hexStringToUIColor(hex: "#C3E6E5")
+        backgroundColorbtn7.backgroundColor = colors.hexStringToUIColor(hex: "#E7EBC5")
         
         buttonArray.append(backgroundColorbtn1)
         buttonArray.append(backgroundColorbtn2)
@@ -66,6 +66,11 @@ class AddCategoryViewController: UITableViewController, UITextViewDelegate {
         buttonArray.append(backgroundColorbtn6)
         buttonArray.append(backgroundColorbtn7)
         
+        
+        if editingMode {
+            colorCode = (editingCategory?.color)!
+            selectBackgroundColorButton(colorCode: colorCode)
+        }
     }
     
     var editingCategory: Category? {
