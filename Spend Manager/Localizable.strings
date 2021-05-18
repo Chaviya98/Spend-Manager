@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  Spend Manager
+
+  Created by Chaveen Ellawela on 2021-05-18.
+  
+*/
+"editCategorySaveButtonTitle" = "Edit";
+"editCategoryHeaderTitle" = "Edit Category";
+"editExpenseSaveButtonTitle" = "Edit";
+"editExpenseHeaderTitle" = "Edit Expense";
+
+"noteTextVIewPlaceHolder" = "Notes";
+
+"emptyMessageForExpenses" = "No expenses available for this Category.";
+"hintMessageForExpenses" = "Add a new Category to manage expenses.";

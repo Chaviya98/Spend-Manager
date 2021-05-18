@@ -249,13 +249,13 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
         if selectedCategory == nil {
             addExpenseBtn.isEnabled = false
             editExpenseBtn.isEnabled = false
-            expenseTable.setEmptyMessage("Add a new Category to manage expenses", UIColor.black)
+            expenseTable.setEmptyMessage(NSLocalizedString("hintMessageForExpenses", comment: ""), UIColor.black)
             return 0
         }
         
         if sectionInfo.numberOfObjects == 0 {
             editExpenseBtn.isEnabled = false
-            expenseTable.setEmptyMessage("No expenses available for this Category", UIColor.black)
+            expenseTable.setEmptyMessage(NSLocalizedString("emptyMessageForExpenses", comment: ""), UIColor.black)
         }
         
         return sectionInfo.numberOfObjects

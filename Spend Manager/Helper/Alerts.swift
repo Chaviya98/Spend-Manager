@@ -14,4 +14,13 @@ struct Alerts {
         static let ACTION_TITLE = "OK"
     }
     
+    struct InvalidParameters {
+        static let TITLE = "Adding Failed !"
+        static let MESSAGE = "Please enter valid inputs."
+    }
+    
+    struct failedCalendarEvent {
+        static let TITLE = "Event Creation Failed !"
+        static let MESSAGE = "Calendar event could not be created!. Please try again later." 
+    }
 }

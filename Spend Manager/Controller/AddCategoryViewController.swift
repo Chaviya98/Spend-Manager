@@ -38,7 +38,7 @@ class AddCategoryViewController: UITableViewController, UITextViewDelegate {
         if !editingMode {
             // Settings the placeholder for notes UITextView
             notesTextView.delegate = self
-            notesTextView.text = "Notes"
+            notesTextView.text = NSLocalizedString("noteTextVIewPlaceHolder", comment: "")
             notesTextView.textColor = UIColor.lightGray
             colorCode = "#DBD9D9"
             selectBackgroundColorButton(colorCode:self.colorCode)
@@ -84,8 +84,8 @@ class AddCategoryViewController: UITableViewController, UITextViewDelegate {
     
     func configureView() {
         if editingMode {
-            self.navigationItem.title = "Edit Project"
-            self.navigationItem.rightBarButtonItem?.title = "Edit"
+            self.navigationItem.title = NSLocalizedString("editCategoryHeaderTitle", comment: "")
+            self.navigationItem.rightBarButtonItem?.title = NSLocalizedString("editCategorySaveButtonTitle", comment: "")
         }
         
         
@@ -195,11 +195,11 @@ class AddCategoryViewController: UITableViewController, UITextViewDelegate {
                 try managedContext.save()
                 categories.append(category)
             } catch _ as NSError {
-                displayAlertView(alertTitle: "Error", alertDescription: "An error occured while saving the project.")
+                displayAlertView(alertTitle: Alerts.CommonAlert.TITLE, alertDescription: Alerts.CommonAlert.MESSAGE)
             }
             
         } else {
-            displayAlertView(alertTitle: "Error", alertDescription: "Please fill the required fields.")
+            displayAlertView(alertTitle: Alerts.InvalidParameters.TITLE, alertDescription: Alerts.InvalidParameters.MESSAGE)
         }
         
         dismissAddProjectPopOver()
@@ -229,7 +229,7 @@ class AddCategoryViewController: UITableViewController, UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
-            textView.text = "Notes"
+            textView.text = NSLocalizedString("noteTextVIewPlaceHolder", comment: "")
             textView.textColor = UIColor.lightGray
         }
         addButtonEnability()

@@ -53,7 +53,7 @@ class AddExpensesViewController: UITableViewController, UIPopoverPresentationCon
             
             // Settings the placeholder for notes UITextView
             notesTextView.delegate = self
-            notesTextView.text = "Notes"
+            notesTextView.text = NSLocalizedString("noteTextVIewPlaceHolder", comment: "")
             notesTextView.textColor = UIColor.lightGray
             
             occurrenceType = "One off"
@@ -96,8 +96,8 @@ class AddExpensesViewController: UITableViewController, UIPopoverPresentationCon
     
     func configureView() {
         if editingMode {
-            self.navigationItem.title = "Edit Task"
-            self.navigationItem.rightBarButtonItem?.title = "Edit"
+            self.navigationItem.title = NSLocalizedString("editExpenseHeaderTitle", comment: "")
+            self.navigationItem.rightBarButtonItem?.title = NSLocalizedString("editExpenseSaveButtonTitle", comment: "")
         }
         
         if let expense = editingExpense {
@@ -345,7 +345,7 @@ class AddExpensesViewController: UITableViewController, UIPopoverPresentationCon
                     expenses.append(expense as! Expense)
 
                 } catch _ as NSError {
-                    displayAlertView(alertTitle: "Error", alertDescription: "An error occured while saving the expense.")
+                    displayAlertView(alertTitle: Alerts.CommonAlert.TITLE, alertDescription: Alerts.CommonAlert.MESSAGE)
                 }
                 dismissAddProjectPopOver()
             } else {
@@ -353,7 +353,7 @@ class AddExpensesViewController: UITableViewController, UIPopoverPresentationCon
             }
 
         } else {
-            displayAlertView(alertTitle: "Error", alertDescription: "Please fill the required fields.")
+            displayAlertView(alertTitle: Alerts.InvalidParameters.TITLE, alertDescription: Alerts.InvalidParameters.MESSAGE)
         }
         
     }
@@ -402,9 +402,7 @@ class AddExpensesViewController: UITableViewController, UIPopoverPresentationCon
             try eventStore.save(event, span: .thisEvent)
             identifier = event.eventIdentifier
         } catch {
-            let alert = UIAlertController(title: "Error", message: "Calendar event could not be created!", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            displayAlertView(alertTitle: Alerts.failedCalendarEvent.TITLE, alertDescription: Alerts.failedCalendarEvent.MESSAGE)
         }
         
         notificationCenter.getNotificationSettings { (notificationSettings) in
@@ -451,9 +449,7 @@ class AddExpensesViewController: UITableViewController, UIPopoverPresentationCon
                 try eventStore.remove(eventToRemove!, span: .thisEvent)
                 sucess = true
             } catch {
-                let alert = UIAlertController(title: "Error", message: "Calendar event could not be deleted!", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                displayAlertView(alertTitle: Alerts.failedCalendarEvent.TITLE, alertDescription: Alerts.failedCalendarEvent.MESSAGE)
                 sucess = false
             }
         }
@@ -524,7 +520,7 @@ class AddExpensesViewController: UITableViewController, UIPopoverPresentationCon
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
-            textView.text = "Notes"
+            textView.text = NSLocalizedString("noteTextVIewPlaceHolder", comment: "")
             textView.textColor = UIColor.lightGray
         }
         addButtonEnability()
