@@ -358,7 +358,7 @@ class AddExpensesViewController: UITableViewController, UIPopoverPresentationCon
         
     }
     
-    // Creates an event in the EKEventStore
+    // Creates an event and notiifcation
     func createEvent(_ eventStore: EKEventStore, title: String, eventDate: Date, occurrence: String, amount: Double, categoryName: String) -> String {
         let event = EKEvent(eventStore: eventStore)
         var identifier = ""

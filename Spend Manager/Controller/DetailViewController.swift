@@ -196,16 +196,10 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
     func insertNewObject(_ sender: Any) {
         let context = self.fetchedResultsController.managedObjectContext
         let newExpense = Expense(context: context)
-        
-        // If appropriate, configure the new managed object.
-        // newTask.timestamp = Date()
-        
-        // Save the context.
+    
         do {
             try context.save()
         } catch {
-            // Replace this implementation with code to handle the error appropriately.
-            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             let nserror = error as NSError
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
@@ -291,8 +285,6 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
             do {
                 try context.save()
             } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
@@ -321,9 +313,7 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
         // Edit the sort key as appropriate.
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
-        
-        // Edit the section name key path and cache name if appropriate.
-        // nil for section name key path means "no sections".
+
         let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
         aFetchedResultsController.delegate = self
         _fetchedResultsController = aFetchedResultsController
@@ -331,8 +321,6 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
         do {
             try _fetchedResultsController!.performFetch()
         } catch {
-            // Replace this implementation with code to handle the error appropriately.
-            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             let nserror = error as NSError
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
@@ -373,12 +361,10 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
     }
     
     func configureCell(_ cell: CustomCellExpenses, withExpense expense: Expense, index: Int) {
-        //print("Related Project", task.project)
         cell.commonInt(index + 1, expensesName:expense.name!, expensesAmount :expense.amount, startDate:expense.startDate! as Date, dueDate:expense.endDate! as Date, notes:expense.notes!, budget:selectedCategory!.budget,occurrence: expense.occurrence!)
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        //        taskTable.endUpdates()
         expenseTable.reloadData()
         
     }
