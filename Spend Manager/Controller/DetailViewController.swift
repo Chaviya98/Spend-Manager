@@ -80,26 +80,21 @@ class DetailViewController: UIViewController, NSFetchedResultsControllerDelegate
                 totalAmountSpend = totalAmountSpend + Double(expenses[index].amount)
             }
             
-            if (expenses.count <= 4){
-                for index in expenses.indices {
-                    expensesNameArray.append(expenses[index].name!)
-                    expensesAmountArray.append(expenses[index].amount)
+            let sortedExpenseArray = expenses.sorted(by: { $0.amount > $1.amount })
+            
+            for index in sortedExpenseArray.indices {
+                if(index < 4){
+                    expensesNameArray.append(sortedExpenseArray[index].name!)
+                    expensesAmountArray.append(sortedExpenseArray[index].amount)
+                } else {
+                    otherAmount = otherAmount + sortedExpenseArray[index].amount
                 }
-            } else {
-                for index in expenses.indices {
-                    if(index <= 3){
-                        expensesNameArray.append(expenses[index].name!)
-                        expensesAmountArray.append(expenses[index].amount)
-                    } else {
-                        otherAmount = otherAmount + expenses[index].amount
-                    }
-                    
-                }
-                
+            }
+            
+            if(sortedExpenseArray.count > 4){
                 expensesNameArray.append("Others")
                 expensesAmountArray.append(otherAmount)
             }
-            
             expensesNameArray.append("Remaining")
             expensesAmountArray.append(category.budget - totalAmountSpend)
             
