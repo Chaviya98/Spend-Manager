@@ -189,9 +189,6 @@ class AddCategoryViewController: UITableViewController, UITextViewDelegate {
             category.setValue(0, forKeyPath: "oftenSelectedCount")
             category.setValue(backgroundColor, forKeyPath: "color")
             
-            
-            print(category)
-            
             do {
                 try managedContext.save()
                 categories.append(category)
