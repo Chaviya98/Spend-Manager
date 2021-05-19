@@ -168,64 +168,7 @@ class AddExpensesViewController: UITableViewController, UIPopoverPresentationCon
     
     
     @IBAction func btnPressedAdd(_ sender: UIBarButtonItem) {
-//        notificationCenter.getNotificationSettings { (notificationSettings) in
-//            switch notificationSettings.authorizationStatus {
-//            case .notDetermined:
-//                self.requestAuthorization(completionHandler: { (success) in
-//                    guard success else { return }
-//                    print("Scheduling Notifications")
-//                    // Schedule Local Notification
-//                    let content = UNMutableNotificationContent()
-//                    content.title = "Pending Payment"
-//                    content.sound = .default
-//                    content.body = "Your a expense in categiry b due date is going to end soon. Please pay amout"
-//
-//
-//                    let targetDate = self.datePicker.date
-//                   let trigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.hour, .minute],
-//                                                                                                              from: targetDate),repeats: true)
-//
-//                    let request = UNNotificationRequest(identifier: "some_long_id", content: content, trigger: trigger)
-//                    UNUserNotificationCenter.current().add(request, withCompletionHandler: { error in
-//                        if error != nil {
-//                            print("something went wrong")
-//                        }
-//                    })
-//                    print("Scheduled Notifications")
-//                })
-//            case .authorized:
-//                let content = UNMutableNotificationContent()
-//                // Schedule Local Notification     let content = UNMutableNotificationContent()
-//                content.title = "Pending Payment"
-//                content.sound = .default
-//                content.body = "Your a expense in categiry b due date is going to end soon. Please pay amout"
-//
-//
-//                let targetDate = self.datePicker.date
-//               let trigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.hour, .minute],
-//                                                                                                          from: targetDate),repeats: true)
-//
-//                let request = UNNotificationRequest(identifier: "some_long_id", content: content, trigger: trigger)
-//                UNUserNotificationCenter.current().add(request, withCompletionHandler: { error in
-//                    if error != nil {
-//                        print("something went wrong")
-//                    }
-//                })
-//                print("Scheduled Notifications")
-//            case .denied:
-//                print("Application Not Allowed to Display Notifications")
-//            case .provisional:
-//                print("Application Not Allowed to Display Notifications")
-//            case .ephemeral:
-//                print("Application Not Allowed to Display Notifications")
-//            }
-//        }
-        
-   // let triggerDate =  Calendar.current.dateComponents([.weekday,.hour,.minute], from: date as Date)
-        print("chaveen")
-   
-        
-//        dismissAddProjectPopOver()
+
         if validateUserInputs() {
 
             var calendarIdentifier = ""
