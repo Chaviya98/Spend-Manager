@@ -13,6 +13,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     
     var detailViewController: DetailViewController? = nil
     var managedObjectContext: NSManagedObjectContext? = nil
+    var sortByLetters:Bool = false
     
     @IBOutlet var categoryTable: UITableView!
     
@@ -149,7 +150,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     
     
     var fetchedResultsController: NSFetchedResultsController<Category> {
-        if _fetchedResultsController != nil {
+        if (_fetchedResultsController != nil && sortByLetters != true) {
             return _fetchedResultsController!
         }
         
@@ -157,11 +158,17 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         
         // Set the batch size to a suitable number.
         fetchRequest.fetchBatchSize = 20
-        
+
         // Edit the sort key as appropriate.
-        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
-        
-        fetchRequest.sortDescriptors = [sortDescriptor]
+        if (sortByLetters){
+            sortByLetters = false
+            let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+            fetchRequest.sortDescriptors = [sortDescriptor]
+        } else {
+            let sortDescriptor = NSSortDescriptor(key: "budget", ascending: false)
+            fetchRequest.sortDescriptors = [sortDescriptor]
+        }
+
 
         let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext!, sectionNameKeyPath: nil, cacheName: "Master")
         aFetchedResultsController.delegate = self
@@ -179,6 +186,12 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         autoSelectTableRow()
         
         return _fetchedResultsController!
+    }
+    
+    @IBAction func btnPressedSort(_ sender: Any) {
+        sortByLetters = true
+        autoSelectTableRow()
+        categoryTable.reloadData()
     }
     
     var _fetchedResultsController: NSFetchedResultsController<Category>? = nil

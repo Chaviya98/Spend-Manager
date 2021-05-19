@@ -2,7 +2,7 @@
 //  Expense+CoreDataProperties.swift
 //  Spend Manager
 //
-//  Created by Chaveen Ellawela on 2021-04-21.
+//  Created by Chaveen Ellawela on 2021-05-19.
 //
 //
 
