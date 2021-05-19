@@ -186,6 +186,7 @@ class AddCategoryViewController: UITableViewController, UITextViewDelegate {
             category.setValue(categoryName, forKeyPath: "name")
             category.setValue(budgetValue, forKeyPath: "budget")
             category.setValue(notes, forKeyPath: "notes")
+            category.setValue(0, forKeyPath: "oftenSelectedCount")
             category.setValue(backgroundColor, forKeyPath: "color")
             
             

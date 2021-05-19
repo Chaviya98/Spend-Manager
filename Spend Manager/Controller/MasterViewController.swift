@@ -14,6 +14,9 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     var detailViewController: DetailViewController? = nil
     var managedObjectContext: NSManagedObjectContext? = nil
     var sortByLetters:Bool = false
+    var sortByClick:Bool = false
+    var lastClick: TimeInterval = 0.0
+    var lastIndexPath: IndexPath? = nil
     
     @IBOutlet var categoryTable: UITableView!
     
@@ -56,7 +59,46 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let indexPath = tableView.indexPathForSelectedRow {
             let object = fetchedResultsController.object(at: indexPath)
-            self.performSegue(withIdentifier: "showCategoryDetails", sender: object)
+            
+            let now: TimeInterval = Date().timeIntervalSince1970
+                if (now - lastClick < 0.3) &&
+                    (lastIndexPath?.row == indexPath.row ) {
+                    
+                    let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+                    let entity = NSEntityDescription.entity(forEntityName: "Category", in: managedContext)
+                            let request = NSFetchRequest<NSFetchRequestResult>()
+                            request.entity = entity
+                    let predicate = NSPredicate(format: "name = %@", object.name!)
+                            request.predicate = predicate
+                            do {
+                                var results =
+                                    try managedContext.fetch(request)
+                                var objectUpdate :NSManagedObject? = nil
+                                for result in results where (result as AnyObject).name == object.name {
+                                    objectUpdate = result as! NSManagedObject
+                                }
+                                let newOftenSelectedCount = object.oftenSelectedCount + 1
+                                objectUpdate?.setValue(newOftenSelectedCount, forKey: "oftenSelectedCount")
+                                sortByClick = true
+                                do {
+                                    try managedContext.save()
+
+                                }catch let error as NSError {
+
+                                }
+                            }
+                            catch let error as NSError {
+
+                            }
+                    autoSelectTableRow()
+                    categoryTable.reloadData()
+                } else {
+                    self.performSegue(withIdentifier: "showCategoryDetails", sender: object)
+                }
+            
+                lastClick = now
+                lastIndexPath = indexPath
+            
         }
     }
     
@@ -150,7 +192,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     
     
     var fetchedResultsController: NSFetchedResultsController<Category> {
-        if (_fetchedResultsController != nil && sortByLetters != true) {
+        if (_fetchedResultsController != nil && sortByLetters != true && sortByClick != true) {
             return _fetchedResultsController!
         }
         
@@ -165,7 +207,8 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
             fetchRequest.sortDescriptors = [sortDescriptor]
         } else {
-            let sortDescriptor = NSSortDescriptor(key: "budget", ascending: false)
+            sortByClick = false
+            let sortDescriptor = NSSortDescriptor(key: "oftenSelectedCount", ascending: false)
             fetchRequest.sortDescriptors = [sortDescriptor]
         }
 

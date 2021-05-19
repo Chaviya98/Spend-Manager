@@ -5,6 +5,7 @@
         <attribute name="color" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="oftenSelectedCount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="expense" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Expense" inverseName="category" inverseEntity="Expense"/>
         <userInfo/>
     </entity>
@@ -20,7 +21,7 @@
         <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="expense" inverseEntity="Category"/>
     </entity>
     <elements>
-        <element name="Category" positionX="-54" positionY="-9" width="128" height="104"/>
+        <element name="Category" positionX="-54" positionY="-9" width="128" height="119"/>
         <element name="Expense" positionX="199.8319091796875" positionY="-70.44522094726562" width="128" height="164"/>
     </elements>
 </model>

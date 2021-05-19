@@ -20,6 +20,7 @@ extension Category {
     @NSManaged public var color: String?
     @NSManaged public var name: String?
     @NSManaged public var notes: String?
+    @NSManaged public var oftenSelectedCount: Int64
     @NSManaged public var expense: NSSet?
 
 }
